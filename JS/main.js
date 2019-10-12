@@ -20,11 +20,11 @@ document.getElementById('xPlayer').onclick = function() {
     choosePlayer.style.display = "none";
 }
 
-function player() {
+function playerWinner() {
     if (lastClicked == 1) {
-        player = "X";
+        playerWinner = "X";
      } else if (lastClicked == 0) {
-        player = "O";
+        playerWinner = "O";
      }
 }
 
@@ -64,9 +64,11 @@ function ckeckWinner() {
     }
 }
 
+  
 function congrats() {
-    player();
-    document.getElementById("player").innerHTML = "LAIMĖJO - " + player + "!";
+    playerWinner();
+    document.getElementById("board").innerHTML = "LAIMĖJO - " + playerWinner + "!";
+    document.getElementById("board").style.backgroundColor = "red";
 }
 
 function makeAMove(i, y) {
@@ -88,7 +90,22 @@ function makeAMove(i, y) {
                lastClicked = 1;
                break;
        }
-       printBoard();
-        ckeckWinner();
-   } 
+
+    printBoard();
+    ckeckWinner();
+   }
+
+window.addEventListener("click", function(){
+    var lightBoard = document.getElementById("board")
+    if (winner == false) {
+        if (lastClicked == 1) {
+            player = "O";
+            lightBoard.innerHTML = player + " - žaidėjo ėjimas";
+        } else if (lastClicked === 0) {
+            player = "X";
+            lightBoard.innerHTML = player + " - žaidėjo ėjimas";
+        }else { alert("Pasirinkite žaidėją!")}
+    }
+    console.log(lastClicked);
+})
 
