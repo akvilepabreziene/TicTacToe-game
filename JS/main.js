@@ -28,7 +28,7 @@ function playerWinner() {
      }
 }
 
-function printBoard() {
+function printBoard() {                             
 
     for (var i = 0; i < board.length; i++) {
         for (var y = 0; y < board[i].length; y++) {
@@ -67,8 +67,8 @@ function ckeckWinner() {
   
 function congrats() {
     playerWinner();
+    document.getElementById("board").style.color = "red";
     document.getElementById("board").innerHTML = "LAIMĖJO - " + playerWinner + "!";
-    document.getElementById("board").style.backgroundColor = "red";
 }
 
 function makeAMove(i, y) {
@@ -96,7 +96,7 @@ function makeAMove(i, y) {
    }
 
 window.addEventListener("click", function(){
-    var lightBoard = document.getElementById("board")
+    var lightBoard = document.getElementById("board");
     if (winner == false) {
         if (lastClicked == 1) {
             player = "O";
